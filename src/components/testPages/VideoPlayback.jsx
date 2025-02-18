@@ -203,7 +203,7 @@ const VideoPlayback = () => {
       );
 
       if (response.status === 200) {
-        navigate("/test/fillup");
+        navigate("/thankyou");
       } else {
         navigate("/Error");
       }
@@ -214,7 +214,7 @@ const VideoPlayback = () => {
       console.error("Error uploading video:", error);
       cleanupMediaStream();
       setIsUploading(false);
-      window.location.replace("/test/fillup");
+      window.location.replace("/Error");
       alert("Failed to upload video. Please try again.");
     }
   };
