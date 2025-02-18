@@ -188,8 +188,9 @@ const VideoPlayback = () => {
 
 
       console.log("Uploading with FPS:", fps);
+      
       formData.append("fps", fps.toString()); // Convert fps to string
-
+      
       for (let pair of formData.entries()) {
         console.log(pair[0] + ': ' + pair[1]);
       }
