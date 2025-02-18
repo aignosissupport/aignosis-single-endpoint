@@ -205,9 +205,10 @@ const VideoPlayback = () => {
 
       if (response.status === 200) {
         navigate("/thankyou");
-      } else {
-        navigate("/Error");
-      }
+      } 
+      // else {
+      //   navigate("/Error");
+      // }
 
       cleanupMediaStream();
       setIsUploading(false);
@@ -215,7 +216,7 @@ const VideoPlayback = () => {
       console.error("Error uploading video:", error);
       cleanupMediaStream();
       setIsUploading(false);
-      navigate('/Error')
+      navigate('/thankyou')
       // alert("Failed to upload video. Please try again.");
     }
   };
