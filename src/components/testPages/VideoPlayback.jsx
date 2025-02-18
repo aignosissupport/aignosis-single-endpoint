@@ -283,7 +283,7 @@ const VideoPlayback = () => {
   const handleVideoEnd = () => {
     setIsVideoEnded(true);
     stopRecording();
-    navigate("/test/fillup");
+    navigate("/thankyou");
   };
 
   const getVideoSource = () => {
