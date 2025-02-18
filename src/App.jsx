@@ -92,7 +92,7 @@ const App = () => {
       <Routes>
         {" "}
         {/* Use Routes to define all your routes */}
-        <Route path="/" element={<Homepagemain />} />
+        <Route path="/" element={<TestMain />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/partnership" element={<PartnershipPage />} />
         <Route path="/patienthistory" element={<PatientHistory />} />{" "}
