@@ -223,7 +223,7 @@ export const FillupPage = () => {
       });
 
       console.log(testData)
-      // navigate("/autismtest");
+      navigate("/autismtest");
     }
   };
 
