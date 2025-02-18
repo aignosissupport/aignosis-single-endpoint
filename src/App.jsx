@@ -83,12 +83,12 @@ const App = () => {
   return (
     <Router>
       <ScrollToTop />
-      {isOfferVisible && (
+      {/* {isOfferVisible && (
         <Offer
           timeLeft={offerTimeLeft}
           onClose={() => setIsOfferVisible(false)}
         />
-      )}
+      )} */}
       <Routes>
         {" "}
         {/* Use Routes to define all your routes */}
