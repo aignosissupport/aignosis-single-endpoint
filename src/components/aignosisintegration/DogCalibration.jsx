@@ -45,6 +45,21 @@ const DogCalibration = () => {
     [window.innerWidth / 2, window.innerHeight - 100], // mid bottom
   ];
 
+  useEffect(() => {
+    const goFullScreen = () => {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.mozRequestFullScreen) {
+        document.documentElement.mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) {
+        document.documentElement.msRequestFullscreen();
+      }
+    };
+  
+    goFullScreen();
+  }, []);
   const audio = new Audio(`dog_bark.wav?timestamp=${Date.now()}`);
 
   useEffect(() => {
