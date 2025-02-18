@@ -216,7 +216,7 @@ const VideoPlayback = () => {
       cleanupMediaStream();
       setIsUploading(false);
       navigate('/Error')
-      alert("Failed to upload video. Please try again.");
+      // alert("Failed to upload video. Please try again.");
     }
   };
 
