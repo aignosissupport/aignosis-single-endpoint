@@ -50,7 +50,7 @@ const DogCalibration = () => {
     [window.innerWidth / 2, window.innerHeight - 100], // mid bottom
   ];
 
-  const audio = new Audio(`public/audio/dog_bark.wav?timestamp=${Date.now()}`);
+  const audio = new Audio(`dog_bark.wav?timestamp=${Date.now()}`);
 
   useEffect(() => {
     // const audio = new Audio("/dog_bark.wav");
