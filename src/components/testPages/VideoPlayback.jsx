@@ -25,7 +25,7 @@ const VideoPlayback = () => {
 
   const fpsIntervalRef = useRef(null);
   const { testData, setTestData } = useContext(AppContext);
-  const SERVER_MIDDLEWARE_ENDPOINT = "https://35.207.211.80/";
+  const SERVER_MIDDLEWARE_ENDPOINT = "https://prod.aignosismdw.in";
 
   // Start FPS calculation when recording starts
   const startFpsCalculation = () => {
@@ -57,7 +57,6 @@ const VideoPlayback = () => {
   useEffect(() => {
     window.history.pushState(null, null, window.location.href);
     console.log("testData is", testData);
-    console.log("vl= ",testData.videolanguage);
 
     const handleBackButton = () => {
       navigate("/calibrationpage");
@@ -173,6 +172,7 @@ const VideoPlayback = () => {
       );
       formData.append("patient_uid", testData.PATIENT_UID);
       formData.append("transaction_id", testData.TRANSACTION_ID);
+
       formData.append(
         "calibration_config_data",
         JSON.stringify(testData.calibration_data)
@@ -203,7 +203,7 @@ const VideoPlayback = () => {
       );
 
       if (response.status === 200) {
-        navigate("/thankyou");
+        navigate("/test/fillup");
       } else {
         navigate("/Error");
       }
@@ -214,7 +214,7 @@ const VideoPlayback = () => {
       console.error("Error uploading video:", error);
       cleanupMediaStream();
       setIsUploading(false);
-      window.location.replace("/thankyou");
+      window.location.replace("/test/fillup");
       alert("Failed to upload video. Please try again.");
     }
   };
@@ -283,7 +283,7 @@ const VideoPlayback = () => {
   const handleVideoEnd = () => {
     setIsVideoEnded(true);
     stopRecording();
-    navigate("/thankyou");
+    navigate("/test/fillup");
   };
 
   const getVideoSource = () => {
@@ -293,21 +293,13 @@ const VideoPlayback = () => {
       ? `${baseUrl}Aignosis_Test_vid_Eng_${version}.mp4`
       : `${baseUrl}Aignosis_Test_vid_Hindi_${version}.mp4`;
   };
-  
+
   return (
     <div className="bg-[#1A0C25] min-h-screen flex flex-col justify-center items-center">
       <video ref={webcamRef} autoPlay playsInline muted className="hidden" />
       <video
         ref={videoRef}
-        src={
-          // getVideoSource()
-          testData.videolanguage === "English"
-            ? "https://d228sadnexesrp.cloudfront.net/Test_Videos/Aignosis_Test_vid_Eng_V5.mp4"
-            : 
-            testData.videolanguage === "Hindi"
-            ? "https://d228sadnexesrp.cloudfront.net/Test_Videos/Aignosis_Test_vid_Hindi_V5.mp4"
-            : "https://d228sadnexesrp.cloudfront.net/Test_Videos/Aignosis_Test_vid_Eng_V5.mp4"
-        }
+        src={getVideoSource()}
         controls
         autoPlay={false}
         className="w-full h-full object-cover"
@@ -332,7 +324,7 @@ const VideoPlayback = () => {
       <div className="absolute bottom-10">
         {isVideoEnded ? (
           <button
-            onClick={() => window.location.replace("/thankyou")}
+            onClick={() => window.location.replace("/download")}
             className="px-6 py-3 bg-[#9C00AD] text-white rounded-full font-semibold hover:bg-[#F0A1FF] transition-colors"
           >
             Next
